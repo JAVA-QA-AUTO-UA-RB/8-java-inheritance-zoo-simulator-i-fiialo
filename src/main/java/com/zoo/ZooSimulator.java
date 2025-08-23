@@ -1,21 +1,63 @@
 package com.zoo;
 
+import com.zoo.animals.Animal;
+import com.zoo.animals.IEatable;
+import com.zoo.animals.IPlayable;
+import com.zoo.species.*;
+import com.zoo.zookeper.ZooKeeper;
+
 public class ZooSimulator {
 
     public static void main(String[] args) {
 
-        // Створіть кілька об'єктів різних тварин (лев, орел, пінгвін, слон), задавши їх унікальні параметри.
+        Lion alex = new Lion("Alex", 100);
+        Elephant mary = new Elephant("Mary", 100);
+        Eagle kendrick = new Eagle("Kendrick", 100);
+        Penguin ozz = new Penguin("Ozz", 100);
 
-        // Створіть об'єкт ZooKeeper і прив'яжіть його до зоопарку.
+        ZooKeeper keeper = new ZooKeeper("Ihor");
 
-        // Додайте логіку, яка представляє типові події дня в зоопарку:
-        // - Годування тварин: використання методу feedAnimal().
-        // - Гра з тваринами: використання методу playWithAnimal().
-        // - Перевірка рівня енергії тварин: використання методу checkAnimalEnergyLevel().
+        Animal[] animals = {alex, mary, kendrick, ozz};
 
-        // Симулюйте зміну стану тварин (наприклад, втома після грається, зростання енергії після їжі).
+        System.out.println("Дай Боже, звірята!");
+        for (Animal animal : animals) {
+            animal.displayInfo();
+            animal.makeSound();
+        }
 
-        // Виведіть фінальні результати та стани тварин наприкінці дня.
+        System.out.println("\nЧас бавитись!");
+        IPlayable[] playables = {alex, mary, kendrick, ozz};
+        for (IPlayable play : playables) {
+            keeper.playWithAnimal(play);
+        }
 
+        alex.move();
+        alex.play();
+        mary.move();
+        mary.play();
+        mary.spraySelf();
+        ozz.swim();
+        ozz.play();
+        kendrick.uniqueBirdAction();
+        kendrick.play();
+
+
+        System.out.println("\nЧас підкріпитись!");
+        for (Animal animal : animals) {
+            keeper.feedAnimal(animal);
+        }
+
+
+        System.out.println("\nПеревірка рівня енергії тварин:");
+        for (Animal animal : animals) {
+            keeper.checkAnimalEnergyLevel(animal);
+        }
+
+
+        System.out.println("\nЗвірята пішли відпочивати:");
+        for (Animal animal : animals) {
+            animal.sleep(); // після ігор тварини відпочивають
+            keeper.checkAnimalEnergyLevel(animal);
+        }
     }
 }
