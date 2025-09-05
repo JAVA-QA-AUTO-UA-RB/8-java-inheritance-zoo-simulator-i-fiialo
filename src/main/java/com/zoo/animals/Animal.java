@@ -27,6 +27,10 @@ public class Animal {
         System.out.println("Інформація: Енергія = " + energyLevel + ", Ім'я = " + name + ", Вік = " + age + ", Вага = " + weight);
     }
 
+        protected void decreaseEnergy(int amount) {
+        energyLevel = Math.max(0, energyLevel - amount);
+    }
+    
     public int getEnergyLevel() {
         return energyLevel;
     }
@@ -41,9 +45,5 @@ public class Animal {
 
     public int getWeight() {
         return weight;
-    }
-
-    public void setEnergyLevel(int energyLevel) {
-        this.energyLevel = energyLevel;
     }
 }
