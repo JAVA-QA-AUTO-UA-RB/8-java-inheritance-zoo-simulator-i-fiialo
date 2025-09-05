@@ -2,14 +2,15 @@ package com.zoo.animals;
 
 public class Mammal extends Animal{
 
-    private String furColor;
+    protected String furColor;
 
-    public Mammal(int energyLevel, String name, int age, int weight) {
-        super(energyLevel, name, age, weight);
+    public Mammal(String name, int age, double weight, int energyLevel, String furColor) {
+        super(name, age, weight, energyLevel);
+        this.furColor = furColor;
     }
 
     public void makeSound() {
-        System.out.println("Mammal makes a sound");
+        System.out.println("Ссавець робить звук");
     }
 
     public void groom() {
