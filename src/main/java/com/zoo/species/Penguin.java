@@ -13,15 +13,18 @@ public class Penguin extends Bird {
         System.out.println("Кря-кря!");
     }
 
-    public void swim() {
-        System.out.println("Буль-буль");
-    }
-
     @Override
     public void fly() {
-        int currentEnergy = getEnergyLevel();
-        setEnergyLevel(currentEnergy - 20);
         System.out.println(getName() + " Пінгвін не літає, але плаває:");
         swim();
+    }
+
+    public void swim() {
+        if (getEnergyLevel() >= 20) {
+            decreaseEnergyLevelBy(20);
+            System.out.println(getName() + " плаває (-20 енергії)");
+        } else {
+            System.out.println(getName() + " надто втомлений, щоб плавати");
+        }
     }
 }

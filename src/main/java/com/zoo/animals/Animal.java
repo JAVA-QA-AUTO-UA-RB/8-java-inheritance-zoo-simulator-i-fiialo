@@ -15,14 +15,17 @@ public class Animal {
     }
 
     public void eat() {
-        energyLevel += 5;
+        setEnergyLevel(this.energyLevel + 5);
     }
+
     public void sleep() {
-        energyLevel += 10;
+        setEnergyLevel(this.energyLevel + 10);
     }
+
     public void makeSound() {
         System.out.println("Animal makes a sound");
     }
+
     public void displayInfo() {
         System.out.println("Інформація: Енергія = " + energyLevel + ", Ім'я = " + name + ", Вік = " + age + ", Вага = " + weight);
     }
@@ -44,6 +47,16 @@ public class Animal {
     }
 
     public void setEnergyLevel(int energyLevel) {
-        this.energyLevel = energyLevel;
+        if (energyLevel < 0) {
+            this.energyLevel = 0;
+        } else if (energyLevel > 100) {
+            this.energyLevel = 100;
+        } else {
+            this.energyLevel = energyLevel;
+        }
+    }
+
+    protected void decreaseEnergyLevelBy(int energyPoints) {
+        setEnergyLevel(this.energyLevel - energyPoints);
     }
 }

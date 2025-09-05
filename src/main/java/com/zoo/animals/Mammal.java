@@ -2,8 +2,6 @@ package com.zoo.animals;
 
 public class Mammal extends Animal{
 
-    private String furColor;
-
     public Mammal(int energyLevel, String name, int age, int weight) {
         super(energyLevel, name, age, weight);
     }

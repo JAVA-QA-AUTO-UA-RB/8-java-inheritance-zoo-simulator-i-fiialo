@@ -5,7 +5,7 @@ import com.zoo.animals.Mammal;
 public class Lion extends Mammal {
 
 
-    public Lion(int energyLevel, String name, int age, int weight) {
+    public Lion(int energyLevel, String name, int age, int weight, String furColor) {
         super(energyLevel, name, age, weight);
     }
 
@@ -14,8 +14,7 @@ public class Lion extends Mammal {
     }
 
     public void hunt() {
-        int currentEnergy = getEnergyLevel();
-        setEnergyLevel(currentEnergy - 25);
+        decreaseEnergyLevelBy(25);
         System.out.println(getName() + " полює.");
     }
 }
