@@ -2,7 +2,6 @@ package com.zoo.animals;
 
 public class Bird extends Animal {
 
-    private String wingSpan;
 
     public Bird(int energyLevel, String name, int age, int weight) {
         super(energyLevel, name, age, weight);
@@ -14,8 +13,7 @@ public class Bird extends Animal {
     }
 
     public void fly() {
-        int currentEnergy = getEnergyLevel();
-        setEnergyLevel(currentEnergy - 15);
+        decreaseEnergy(20);
         System.out.println(getName() + " летить.");
     }
 }
