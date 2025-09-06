@@ -5,7 +5,7 @@ import com.zoo.animals.Mammal;
 public class Lion extends Mammal {
 
 
-    public Lion(int energyLevel, String name, int age, int weight, String furColor) {
+    public Lion(int energyLevel, String name, int age, int weight) {
         super(energyLevel, name, age, weight);
     }
 

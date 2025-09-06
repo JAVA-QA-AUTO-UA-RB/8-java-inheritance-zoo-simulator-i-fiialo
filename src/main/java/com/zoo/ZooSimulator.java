@@ -12,10 +12,10 @@ public class ZooSimulator {
     public static void main(String[] args) {
 
         // Створіть кілька об'єктів різних тварин (лев, орел, пінгвін, слон), задавши їх унікальні параметри.
-        Lion lion = new Lion(100, "Max", 15, 200, "жовтий");
-        Eagle eagle = new Eagle(100, "Kendrick", 20, 70);
+        Lion lion = new Lion(90, "Max", 15, 200);
+        Eagle eagle = new Eagle(80, "Kendrick", 20, 70);
         Penguin penguin = new Penguin(100, "Ozz", 10, 36);
-        Elephant elephant = new Elephant(100, "Mary", 13, 1600);
+        Elephant elephant = new Elephant(89, "Mary", 13, 1600);
 
         // Створіть об'єкт ZooKeeper і прив'яжіть його до зоопарку.
         ZooKeeper zooKeeper = new ZooKeeper("Ihor");

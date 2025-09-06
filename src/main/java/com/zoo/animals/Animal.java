@@ -14,12 +14,15 @@ public class Animal {
         this.weight = weight;
     }
 
+    public Animal() {
+    }
+
     public void eat() {
-        setEnergyLevel(this.energyLevel + 5);
+        setEnergyLevel(this.energyLevel + 15);
     }
 
     public void sleep() {
-        setEnergyLevel(this.energyLevel + 10);
+        setEnergyLevel(this.energyLevel + 20);
     }
 
     public void makeSound() {

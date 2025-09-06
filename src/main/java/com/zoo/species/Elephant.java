@@ -14,7 +14,7 @@ public class Elephant extends Mammal {
     }
 
     public void spraySelf() {
-        decreaseEnergyLevelBy(15);
-        System.out.println(getName() + " слон обливається водою (-30 енергії).");
+        decreaseEnergyLevelBy(20);
+        System.out.println(getName() + " слон обливається водою (-20 енергії).");
     }
 }

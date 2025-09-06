@@ -13,7 +13,6 @@ public class Bird extends Animal {
     }
 
     public void fly() {
-        decreaseEnergy(20);
         System.out.println(getName() + " летить.");
     }
 }
