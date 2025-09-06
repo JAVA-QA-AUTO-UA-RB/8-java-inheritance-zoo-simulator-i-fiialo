@@ -1,7 +1,6 @@
 package com.zoo.zookeper;
 
 import com.zoo.animals.Animal;
-import jdk.internal.access.JavaLangInvokeAccess;
 
 public class ZooKeeper {
 
@@ -21,6 +20,7 @@ public class ZooKeeper {
     }
 
     public void playWithAnimal(Animal animal) {
+        animal.decreaseEnergyLevelBy(20);
         System.out.print(animal.getName() + ": грається — ");
         animal.makeSound();
     }
@@ -29,15 +29,9 @@ public class ZooKeeper {
         int energy = animal.getEnergyLevel();
         String level;
 
-        if (energy >= 0 && energy <= 30) {
-            level = "низький";
-        } else if (energy <= 70) {
-            level = "середній";
-        } else if (energy <= 100) {
-            level = "високий";
-        } else {
-            level = "невідомий рівень енергії";
-        }
+        if (energy <= 30) level = "низький";
+        else if (energy <= 70) level = "середній";
+        else level = "високий";
 
         return animal.getName() + ": рівень енергії у " + " — " + level;
     }

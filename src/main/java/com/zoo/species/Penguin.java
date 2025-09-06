@@ -10,12 +10,12 @@ public class Penguin extends Bird {
 
     @Override
     public void makeSound() {
-        System.out.println("Кря-кря!");
+        System.out.println(getName() + " пінгвін кричить: кря-кря!");
     }
 
     @Override
     public void fly() {
-        System.out.println(getName() + " Пінгвін не літає, але плаває:");
+        System.out.println(getName() + " пінгвін не літає, але плаває:");
         swim();
     }
 

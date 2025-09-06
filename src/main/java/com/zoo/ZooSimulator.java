@@ -13,9 +13,9 @@ public class ZooSimulator {
 
         // Створіть кілька об'єктів різних тварин (лев, орел, пінгвін, слон), задавши їх унікальні параметри.
         Lion lion = new Lion(100, "Max", 15, 200, "жовтий");
-        Eagle eagle = new Eagle(100, "Kendrick", 20, 50);
-        Penguin penguin = new Penguin(100, "Ozz", 10, 30);
-        Elephant elephant = new Elephant(100, "Mary", 13, 500);
+        Eagle eagle = new Eagle(100, "Kendrick", 20, 70);
+        Penguin penguin = new Penguin(100, "Ozz", 10, 36);
+        Elephant elephant = new Elephant(100, "Mary", 13, 1600);
 
         // Створіть об'єкт ZooKeeper і прив'яжіть його до зоопарку.
         ZooKeeper zooKeeper = new ZooKeeper("Ihor");
@@ -31,6 +31,7 @@ public class ZooSimulator {
 
         elephant.makeSound();
         elephant.spraySelf();
+        elephant.groom();
         // - Годування тварин: використання методу feedAnimal().
 
         zooKeeper.feedAnimal(lion);
@@ -67,6 +68,7 @@ public class ZooSimulator {
         penguin.eat();
         penguin.sleep();
         // Виведіть фінальні результати та стани тварин наприкінці дня.
+        System.out.println(" -- День в зоопарку закінчився --");
         lion.displayInfo();
         eagle.displayInfo();
         elephant.displayInfo();

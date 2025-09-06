@@ -8,13 +8,14 @@ public class Eagle extends Bird {
         super(energyLevel, name, age, weight);
     }
 
+    @Override
     public void makeSound() {
-        System.out.println("Кріі-кріі!");
+        System.out.println(getName() + " орел кричить: кріі-кріі!");
     }
 
+    @Override
     public void fly() {
-        int currentEnergy = getEnergyLevel();
-        setEnergyLevel(currentEnergy - 20);
-        System.out.println(getName() + " літає.");
+        decreaseEnergyLevelBy(20);
+        System.out.println(getName() + " орел літає.");
     }
 }

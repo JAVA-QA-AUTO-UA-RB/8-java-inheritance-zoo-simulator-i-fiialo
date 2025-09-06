@@ -10,11 +10,11 @@ public class Lion extends Mammal {
     }
 
     public void makeSound() {
-        System.out.println("Ppppp!");
+        System.out.println(getName() + " лев ричить: Ppppp!");
     }
 
     public void hunt() {
-        decreaseEnergyLevelBy(25);
-        System.out.println(getName() + " полює.");
+        decreaseEnergyLevelBy(20);
+        System.out.println(getName() + " лев полює.");
     }
 }

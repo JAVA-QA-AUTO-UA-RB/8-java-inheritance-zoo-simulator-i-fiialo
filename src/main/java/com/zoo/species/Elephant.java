@@ -8,13 +8,13 @@ public class Elephant extends Mammal {
         super(energyLevel, name, age, weight);
     }
 
+    @Override
     public void makeSound() {
-        System.out.println("Труба-ба-ба!");
+        System.out.println(getName() + " слон кричить: труба-ба-ба!");
     }
 
     public void spraySelf() {
-        int currentEnergy = getEnergyLevel();
-        setEnergyLevel(currentEnergy - 30);
-        System.out.println(getName() + " обливається водою.");
+        decreaseEnergyLevelBy(15);
+        System.out.println(getName() + " слон обливається водою (-30 енергії).");
     }
 }

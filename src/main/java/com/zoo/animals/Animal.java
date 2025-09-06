@@ -2,7 +2,7 @@ package com.zoo.animals;
 
 public class Animal {
 
-    private int energyLevel = 100;
+    private int energyLevel;
     protected String name;
     protected int age;
     protected int weight;
@@ -30,6 +30,10 @@ public class Animal {
         System.out.println("Інформація: Енергія = " + energyLevel + ", Ім'я = " + name + ", Вік = " + age + ", Вага = " + weight);
     }
 
+    public void decreaseEnergyLevelBy(int energyPoints) {
+        setEnergyLevel(this.energyLevel - energyPoints);
+    }
+
     public int getEnergyLevel() {
         return energyLevel;
     }
@@ -45,7 +49,6 @@ public class Animal {
     public int getWeight() {
         return weight;
     }
-
     public void setEnergyLevel(int energyLevel) {
         if (energyLevel < 0) {
             this.energyLevel = 0;
@@ -54,9 +57,5 @@ public class Animal {
         } else {
             this.energyLevel = energyLevel;
         }
-    }
-
-    protected void decreaseEnergyLevelBy(int energyPoints) {
-        setEnergyLevel(this.energyLevel - energyPoints);
     }
 }
