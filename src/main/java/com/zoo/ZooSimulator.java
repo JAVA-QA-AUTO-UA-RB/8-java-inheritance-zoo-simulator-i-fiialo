@@ -1,77 +1,73 @@
 package com.zoo;
 
 import com.zoo.animals.Animal;
+import com.zoo.interfaces.IEatable;
+import com.zoo.interfaces.IPlayable;
+import com.zoo.species.Penguin;
+import com.zoo.species.Lion;
 import com.zoo.species.Eagle;
 import com.zoo.species.Elephant;
-import com.zoo.species.Lion;
-import com.zoo.species.Penguin;
 import com.zoo.zookeper.ZooKeeper;
 
 public class ZooSimulator {
 
+    private static ZooKeeper keeper;
+
     public static void main(String[] args) {
 
         // Створіть кілька об'єктів різних тварин (лев, орел, пінгвін, слон), задавши їх унікальні параметри.
-        Lion lion = new Lion(90, "Max", 15, 200);
-        Eagle eagle = new Eagle(80, "Kendrick", 20, 70);
-        Penguin penguin = new Penguin(100, "Ozz", 10, 36);
-        Elephant elephant = new Elephant(89, "Mary", 13, 1600);
+        Lion Lion = new Lion("Max", 100);
+        Eagle Eagle = new Eagle("Kendrik", 100);
+        Penguin Penguin = new Penguin("Ozz", 100);
+        Elephant Elephant = new Elephant("Mary", 100);
 
         // Створіть об'єкт ZooKeeper і прив'яжіть його до зоопарку.
-        ZooKeeper zooKeeper = new ZooKeeper("Ihor");
-        // Додайте логіку, яка представляє типові події дня в зоопарку:
-        lion.makeSound();
-        lion.hunt();
+        ZooKeeper keeper = new ZooKeeper("Ihor");
 
-        eagle.makeSound();
-        eagle.fly();
+        System.out.println("Ласкаво прошу в наш Зоопарк\n");
 
-        penguin.makeSound();
-        penguin.fly();
+        // Масив тварин,які можуть грати
+        IPlayable[] playables = {Lion, Eagle, Elephant, Penguin};
+        for (IPlayable animal : playables) {
+            keeper.playWithAnimal(animal);
+        }
+        System.out.println();
 
-        elephant.makeSound();
-        elephant.spraySelf();
-        elephant.groom();
-        // - Годування тварин: використання методу feedAnimal().
+        Lion.hunt();
+        Eagle.uniqueBirdAction();
+        Penguin.uniqueBirdAction();
+        Elephant.spraySelf();
 
-        zooKeeper.feedAnimal(lion);
-        zooKeeper.feedAnimal(eagle);
-        zooKeeper.feedAnimal(elephant);
-        zooKeeper.feedAnimal(penguin);
-        // - Гра з тваринами: використання методу playWithAnimal().
+        System.out.println();
 
-        zooKeeper.playWithAnimal(lion);
-        zooKeeper.playWithAnimal(eagle);
-        zooKeeper.playWithAnimal(elephant);
-        zooKeeper.playWithAnimal(penguin);
-        // - Перевірка рівня енергії тварин: використання методу checkAnimalEnergyLevel().
+        keeper.feedAnimal(Lion);
+        keeper.feedAnimal(Eagle);
+        keeper.feedAnimal(Penguin);
+        keeper.feedAnimal(Elephant);
 
-        System.out.println(zooKeeper.checkAnimalEnergyLevel(lion));
-        System.out.println(zooKeeper.checkAnimalEnergyLevel(eagle));
-        System.out.println(zooKeeper.checkAnimalEnergyLevel(elephant));
-        System.out.println(zooKeeper.checkAnimalEnergyLevel(penguin));
-        // Симулюйте зміну стану тварин (наприклад, втома після грається, зростання енергії після їжі).
+        System.out.println();
 
-        lion.hunt();
-        lion.eat();
-        lion.sleep();
+        Lion.sleep();
+        Eagle.sleep();
+        Penguin.sleep();
+        Elephant.sleep();
 
-        eagle.fly();
-        eagle.eat();
-        eagle.sleep();
+        System.out.println("\n Перевірка рівня енергії після активності");
 
-        elephant.spraySelf();
-        elephant.eat();
-        elephant.sleep();
-
-        penguin.fly();
-        penguin.eat();
-        penguin.sleep();
         // Виведіть фінальні результати та стани тварин наприкінці дня.
-        System.out.println(" -- День в зоопарку закінчився --");
-        lion.displayInfo();
-        eagle.displayInfo();
-        elephant.displayInfo();
-        penguin.displayInfo();
+        Animal[] animals = {Lion, Eagle, Penguin, Elephant};
+        for (Animal a : animals) {
+            int energy = a.getEnergyLevel();
+            String energyLevel;
+
+            if (energy <= 30) {
+                energyLevel = "низький";
+            } else if (energy <= 70) {
+                energyLevel = "середній";
+            } else {
+                energyLevel = "високий";
+            }
+            System.out.println(" - " + a.getName() + " має " + energyLevel + " енергвї (" + energy + ")");
+        }
     }
 }

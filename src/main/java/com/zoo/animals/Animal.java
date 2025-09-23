@@ -1,57 +1,26 @@
 package com.zoo.animals;
 
-public class Animal {
+import com.zoo.interfaces.IEatable;
+import com.zoo.interfaces.ISleepable;
 
-    private int energyLevel;
+public abstract class Animal implements IEatable, ISleepable {
+
     protected String name;
-    protected int age;
-    protected int weight;
+    protected int energyLevel = 100;
 
-    public Animal(int energyLevel, String name, int age, int weight) {
-        this.energyLevel = energyLevel;
+    public Animal(String name, int energyLevel) {
         this.name = name;
-        this.age = age;
-        this.weight = weight;
-    }
-
-    public Animal() {
-    }
-
-    public void eat() {
-        setEnergyLevel(this.energyLevel + 15);
-    }
-
-    public void sleep() {
-        setEnergyLevel(this.energyLevel + 20);
-    }
-
-    public void makeSound() {
-        System.out.println("Animal makes a sound");
-    }
-
-    public void displayInfo() {
-        System.out.println("Інформація: Енергія = " + energyLevel + ", Ім'я = " + name + ", Вік = " + age + ", Вага = " + weight);
-    }
-
-    public void decreaseEnergyLevelBy(int energyPoints) {
-        setEnergyLevel(this.energyLevel - energyPoints);
-    }
-
-    public int getEnergyLevel() {
-        return energyLevel;
+        setEnergyLevel(energyLevel);
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public int getEnergyLevel() {
+        return energyLevel;
     }
 
-    public int getWeight() {
-        return weight;
-    }
     public void setEnergyLevel(int energyLevel) {
         if (energyLevel < 0) {
             this.energyLevel = 0;
@@ -61,4 +30,20 @@ public class Animal {
             this.energyLevel = energyLevel;
         }
     }
+
+    public void increaseEnergy(int amount) {
+        setEnergyLevel(this.energyLevel + amount);
+    }
+
+    public void decreaseEnergy(int amount) {
+        setEnergyLevel(this.energyLevel - amount);
+    }
+
+    public abstract void makeSound();
+
+    @Override
+    public abstract void eat();
+
+    @Override
+    public abstract void sleep();
 }

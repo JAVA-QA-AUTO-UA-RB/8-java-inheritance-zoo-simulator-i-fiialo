@@ -1,30 +1,66 @@
 package com.zoo.species;
 
 import com.zoo.animals.Bird;
+import com.zoo.interfaces.IPlayable;
 
-public class Penguin extends Bird {
+public class Penguin extends Bird implements IPlayable {
 
-    public Penguin(int energyLevel, String name, int age, int weight) {
-        super(energyLevel, name, age, weight);
+    public Penguin(String name, int energyLevel) {
+        super(name, energyLevel);
     }
 
     @Override
     public void makeSound() {
-        System.out.println(getName() + " пінгвін кричить: кря-кря!");
+        System.out.println(name + " пінгвін кричить: кря-кря!");
     }
 
     @Override
+    public void eat() {
+        increaseEnergy(10);
+        System.out.println(name + " їсть. Енергія зараз " + getEnergyLevel() + ".");
+    }
+
+    @Override
+    public void sleep() {
+        increaseEnergy(20);
+        System.out.println(name + " спить. Енергія зара " + getEnergyLevel() + ".");
+    }
+
+    @Override
+    public void play() {
+        if (getEnergyLevel() >= 20) {
+            decreaseEnergy(20);
+            System.out.println(getName() + " грається. Енергія зараз " + getEnergyLevel() + ".");
+        } else {
+            System.out.println(getName() + " занадто втомлений, щоб гратися.");
+        }
+    }
+
     public void fly() {
-        System.out.println(getName() + " пінгвін не літає, але плаває:");
+        System.out.println(name + " не літає, а плаває");
         swim();
     }
 
-    public void swim() {
+    @Override
+    public void uniqueBirdAction() {
+        surfOnIce();
+    }
+
+    private void surfOnIce() {
         if (getEnergyLevel() >= 20) {
-            decreaseEnergyLevelBy(20);
-            System.out.println(getName() + " плаває (-20 енергії)");
+            decreaseEnergy(20);
+            System.out.println(name + " серфінг на льоду. Енергія зараз" + getEnergyLevel() + ".");
         } else {
-            System.out.println(getName() + " надто втомлений, щоб плавати");
+            System.out.println(name + " дуже втомився.");
+        }
+    }
+
+    public void swim() {
+        if (getEnergyLevel() >= 10) {
+            decreaseEnergy(10);
+            System.out.println(name + " плаває. Енергія зараз" + getEnergyLevel() + ".");
+        } else {
+            System.out.println(name + " дуже втомився.");
         }
     }
 }

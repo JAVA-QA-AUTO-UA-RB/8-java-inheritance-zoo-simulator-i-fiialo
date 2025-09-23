@@ -1,30 +1,29 @@
 package com.zoo.zookeper;
 
 import com.zoo.animals.Animal;
+import com.zoo.interfaces.IEatable;
+import com.zoo.interfaces.IPlayable;
 
 public class ZooKeeper {
-
+    //Private field
     private String name;
 
+    //Constructor
     public ZooKeeper(String name) {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void feedAnimal(Animal animal) {
+    //Feed animal
+    public void feedAnimal(IEatable animal) {
+        System.out.println(name + " годує " + ((Animal)animal).getName() + ".");
         animal.eat();
-        System.out.println(animal.getName() + " поїв.");
     }
 
-    public void playWithAnimal(Animal animal) {
-        animal.decreaseEnergyLevelBy(20);
-        System.out.print(animal.getName() + ": грається — ");
-        animal.makeSound();
+    //Play with animal
+    public void playWithAnimal(IPlayable animal) {
+        System.out.println(name + " грається з " + ((Animal)animal).getName() + ".");
+        animal.play();
     }
-
     public String checkAnimalEnergyLevel(Animal animal) {
         int energy = animal.getEnergyLevel();
         String level;
